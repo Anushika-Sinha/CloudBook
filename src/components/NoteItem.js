@@ -11,7 +11,7 @@ const NoteItem = (props) => {
         <div className="card-body">
         <div className="d-flex align-items-center">
           <h5 className="card-title">{note.title}</h5>
-          <i className="fa fa-trash-o mx-2" onClick={()=>{deleteNote(note._id)}}></i>
+          <i className="fa fa-trash-o mx-2" onClick={()=>{deleteNote(note._id); props.showAlert('Deleted Successfully.', 'danger');}}></i>
           <i className="fa fa-pencil-square-o mx-2" onClick={()=>{updateNote(note)}}></i>
           </div>
           <p className="card-text">

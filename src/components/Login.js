@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState({email:"", password:""});
     let navigate = useNavigate();
 
@@ -23,12 +23,14 @@ const Login = () => {
         //Save the auth token and redirect
         localStorage.setItem('token', json.authtoken);
         navigate("/");
+        props.showAlert('Login Successful.', 'success');
     }else{
-        alert("Invalid Creds");
+        props.showAlert('Invalid Credentials.', 'danger');
     }
   }
   return (
-    <div>
+    <div className="mt-3">
+        <h2>Login to continue to CloudBook</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
